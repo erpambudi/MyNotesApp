@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.erpambudi.mynotesapp">
+    <permission android:name="com.erpambudi.mynotesapp.READ_DATABASE" android:protectionLevel="normal"/>
+    <permission android:name="com.erpambudi.mynotesapp.WRITE_DATABASE" android:protectionLevel="normal"/>
 
     <application
         android:allowBackup="true"
@@ -9,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NoteAddUpdateActivity"></activity>
+        <activity android:name=".NoteAddUpdateActivity" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,6 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <provider
+            android:name=".provider.NoteProvider"
+            android:authorities="com.erpambudi.mynotesapp"
+            android:enabled="true"
+            android:exported="true"
+            android:readPermission="com.erpambudi.mynotesapp.READ_DATABASE"
+            android:writePermission="com.erpambudi.mynotesapp.WRITE_DATABASE"></provider>
     </application>
 
 </manifest>
